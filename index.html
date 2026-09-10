@@ -285,31 +285,45 @@
 
 
                 <!-- Quality -->
-                <div class="setting-card">
+<div class="setting-card">
+    <label for="qualityToggle">
+        Quality Control
+    </label>
 
-                    <label for="quality">
-                        Quality
-                    </label>
+    <label class="toggle-setting">
+        <input
+            id="qualityToggle"
+            type="checkbox"
+        >
 
-                    <div class="quality-row">
+        <span class="toggle"></span>
 
-                        <input
-                            id="quality"
-                            type="range"
-                            min="10"
-                            max="100"
-                            value="90"
-                        >
+        <span class="toggle-text">
+            <strong>Manual Quality</strong>
+            <small>
+                Enable to control compression quality manually.
+            </small>
+        </span>
+    </label>
 
-                        <strong id="qualityValue">
-                            90%
-                        </strong>
+    <div
+        id="qualityControls"
+        class="quality-row hidden"
+    >
+        <input
+            id="quality"
+            type="range"
+            min="10"
+            max="100"
+            value="90"
+            disabled
+        >
 
-                    </div>
-
-                </div>
-
-            </div>
+        <strong id="qualityValue">
+            90%
+        </strong>
+    </div>
+</div>
 
 
             <!-- Smoothing -->
@@ -319,7 +333,6 @@
                 <input
                     id="smoothing"
                     type="checkbox"
-                    checked
                 >
 
                 <span class="toggle"></span>

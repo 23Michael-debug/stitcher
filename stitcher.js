@@ -403,7 +403,8 @@ function drawSegment(
 function canvasToBlob(
     canvas,
     format,
-    quality
+    quality,
+    qualityEnabled
 ) {
 
     return new Promise(
@@ -429,6 +430,36 @@ function canvasToBlob(
             }
 
 
+            /*
+             * Manual Quality ON:
+             * use the exact quality selected
+             * by the user.
+             *
+             * Manual Quality OFF:
+             * use automatic compression.
+             */
+
+            let outputQuality =
+                quality;
+
+
+            if (
+                !qualityEnabled &&
+                (
+                    format === "webp" ||
+                    format === "jpg"
+                )
+            ) {
+                outputQuality =
+                    0.82;
+            }
+
+
+            /*
+             * PNG does not use the quality
+             * parameter in the same way.
+             */
+
             canvas.toBlob(
                 blob => {
 
@@ -450,7 +481,7 @@ function canvasToBlob(
                     });
                 },
                 mimeType,
-                quality
+                outputQuality
             );
         }
     );
@@ -711,10 +742,11 @@ async function stitchImages(
             mimeType
         } =
             await canvasToBlob(
-                canvas,
-                settings.format,
-                quality
-            );
+    canvas,
+    settings.format,
+    quality,
+    settings.qualityEnabled
+);
 
 
         results.push({

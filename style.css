@@ -655,94 +655,94 @@ text-align: right;
 
 /* Toggle */
 
-.toggle-setting {
-display: flex;
+.setting-card .toggle-setting {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-align-items: center;
+    margin-top: 15px;
+    margin-bottom: 0;
 
-gap: 12px;
+    padding: 13px;
 
-margin-top: 15px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
 
-padding: 13px;
+    background: var(--surface-2);
 
-border: 1px solid var(--border);
-border-radius: 11px;
-
-background: var(--surface-2);
-
-cursor: pointer;
-
+    cursor: pointer;
 }
 
-.toggle-setting input {
-display: none;
+.setting-card .toggle-setting input {
+    display: none;
 }
 
-.toggle {
-position: relative;
+.setting-card .toggle {
+    position: relative;
 
-flex: 0 0 auto;
+    flex: 0 0 auto;
 
-width: 42px;
-height: 24px;
+    width: 42px;
+    height: 24px;
 
-border-radius: 20px;
+    border-radius: 20px;
 
-background: var(--border);
+    background: var(--border);
 
-transition: 0.2s;
-
+    transition: 0.2s;
 }
 
-.toggle::after {
-content: "";
+.setting-card .toggle::after {
+    content: "";
 
-position: absolute;
+    position: absolute;
 
-top: 3px;
-left: 3px;
+    top: 3px;
+    left: 3px;
 
-width: 18px;
-height: 18px;
+    width: 18px;
+    height: 18px;
 
-border-radius: 50%;
+    border-radius: 50%;
 
-background: white;
+    background: white;
 
-transition: 0.2s;
-
+    transition: 0.2s;
 }
 
-.toggle-setting input:checked + .toggle {
-background: var(--accent);
+.setting-card .toggle-setting input:checked + .toggle {
+    background: var(--accent);
 }
 
-.toggle-setting input:checked + .toggle::after {
-transform: translateX(18px);
+.setting-card .toggle-setting input:checked + .toggle::after {
+    transform: translateX(18px);
 
-background: var(--accent-text);
-
+    background: var(--accent-text);
 }
 
-.toggle-text {
-display: flex;
+.setting-card .toggle-text {
+    display: flex;
 
-flex-direction: column;
+    flex-direction: column;
 
-gap: 3px;
+    gap: 3px;
 
+    margin: 0;
 }
 
-.toggle-text strong {
-font-size: 12px;
+.setting-card .toggle-text strong {
+    margin: 0;
+
+    font-size: 12px;
 }
 
-.toggle-text small {
-color: var(--muted);
+.setting-card .toggle-text small {
+    margin: 0;
 
-font-size: 10px;
+    color: var(--muted);
 
+    font-size: 10px;
+    line-height: 1.4;
 }
 
 /* Stitch Button */
@@ -1422,4 +1422,85 @@ cursor: not-allowed;
         padding: 10px 12px;
     }
 
+}
+
+/* Standalone Toggle Fix */
+
+.settings-grid > .toggle-setting {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin: 0;
+    padding: 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+
+    background: var(--surface-2);
+
+    cursor: pointer;
+}
+
+.settings-grid > .toggle-setting input {
+    display: none;
+}
+
+.settings-grid > .toggle-setting .toggle {
+    position: relative;
+    flex: 0 0 auto;
+
+    width: 42px;
+    height: 24px;
+
+    border-radius: 20px;
+    background: var(--border);
+
+    transition: 0.2s;
+}
+
+.settings-grid > .toggle-setting .toggle::after {
+    content: "";
+
+    position: absolute;
+    top: 3px;
+    left: 3px;
+
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+    background: white;
+
+    transition: 0.2s;
+}
+
+.settings-grid > .toggle-setting input:checked + .toggle {
+    background: var(--accent);
+}
+
+.settings-grid > .toggle-setting input:checked + .toggle::after {
+    transform: translateX(18px);
+    background: var(--accent-text);
+}
+
+.settings-grid > .toggle-setting .toggle-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    margin: 0;
+}
+
+.settings-grid > .toggle-setting .toggle-text strong {
+    margin: 0;
+    font-size: 12px;
+}
+
+.settings-grid > .toggle-setting .toggle-text small {
+    margin: 0;
+
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.4;
 }

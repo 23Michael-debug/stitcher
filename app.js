@@ -84,6 +84,12 @@ document.getElementById("background");
 const formatSelect =
 document.getElementById("format");
 
+const qualityToggle =
+document.getElementById("qualityToggle");
+
+const qualityControls =
+document.getElementById("qualityControls");
+
 const qualityInput =
 document.getElementById("quality");
 
@@ -155,14 +161,31 @@ function () {
 
 );
 
+qualityToggle.addEventListener(
+    "change",
+    function () {
+
+        const enabled =
+            qualityToggle.checked;
+
+        qualityControls.classList.toggle(
+            "hidden",
+            !enabled
+        );
+
+        qualityInput.disabled =
+            !enabled;
+    }
+);
+
+
 qualityInput.addEventListener(
-"input",
-function () {
+    "input",
+    function () {
 
-    qualityValue.textContent =
-        qualityInput.value + "%";
-}
-
+        qualityValue.textContent =
+            qualityInput.value + "%";
+    }
 );
 
 /* =========================
@@ -971,8 +994,11 @@ return {
     format:
         formatSelect.value,
 
-    quality:
-        Number(qualityInput.value) / 100,
+    qualityEnabled:
+    qualityToggle.checked,
+
+quality:
+    Number(qualityInput.value) / 100,
 
     smoothing:
         smoothingInput.checked
